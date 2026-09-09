@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Datos locales / sensibles
+src/main/resources/application.properties
+
+# Logs de errores de Java
+hs_err_pid*.log
+replay_pid*.log
+
+# Compilación
+target/
