@@ -38,8 +38,10 @@ public class Pago {
     @Column(name = "forma_pago", nullable = false, length = 30)
     private String formaPago;
 
-    public Pago() {
-    }
+    @Column(name = "estado", nullable = false)
+    private Boolean estado;
+
+    public Pago() {}
 
     public Integer getIdPago() {
         return idPago;
@@ -79,5 +81,13 @@ public class Pago {
 
     public void setFormaPago(String formaPago) {
         this.formaPago = formaPago;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 }
