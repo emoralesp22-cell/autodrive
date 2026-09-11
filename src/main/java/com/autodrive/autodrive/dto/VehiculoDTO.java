@@ -8,18 +8,29 @@ public class VehiculoDTO {
     private String placa;
     private String marca;
     private String modelo;
+    private String color;
+    private String tipo;
     private BigDecimal precioDia;
     private Boolean estado;
 
-    public VehiculoDTO() {
-    }
+    public VehiculoDTO() {}
 
-    public VehiculoDTO(Integer idVehiculo, String placa, String marca,
-                       String modelo, BigDecimal precioDia, Boolean estado) {
+    public VehiculoDTO(
+            Integer idVehiculo,
+            String placa,
+            String marca,
+            String modelo,
+            String color,
+            String tipo,
+            BigDecimal precioDia,
+            Boolean estado) {
+
         this.idVehiculo = idVehiculo;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
+        this.color = color;
+        this.tipo = tipo;
         this.precioDia = precioDia;
         this.estado = estado;
     }
@@ -54,6 +65,22 @@ public class VehiculoDTO {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public BigDecimal getPrecioDia() {

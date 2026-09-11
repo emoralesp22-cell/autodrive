@@ -20,7 +20,7 @@ public class VehiculoService {
     public List<VehiculoDTO> listar() {
         return vehiculoRepository.findAll()
                 .stream()
-                .filter(vehiculo -> Boolean.TRUE.equals(vehiculo.getEstado()))
+                .filter(v -> Boolean.TRUE.equals(v.getEstado()))
                 .map(this::convertirADTO)
                 .collect(Collectors.toList());
     }
@@ -34,12 +34,17 @@ public class VehiculoService {
     }
 
     public VehiculoDTO guardar(VehiculoDTO dto) {
+
         Vehiculo vehiculo = new Vehiculo();
 
         vehiculo.setPlaca(dto.getPlaca());
         vehiculo.setMarca(dto.getMarca());
         vehiculo.setModelo(dto.getModelo());
+        vehiculo.setColor(dto.getColor());
+        vehiculo.setTipo(dto.getTipo());
         vehiculo.setPrecioDia(dto.getPrecioDia());
+
+        // Todo vehículo nuevo comienza activo
         vehiculo.setEstado(true);
 
         Vehiculo guardado = vehiculoRepository.save(vehiculo);
@@ -48,6 +53,7 @@ public class VehiculoService {
     }
 
     public VehiculoDTO actualizar(Integer id, VehiculoDTO dto) {
+
         Vehiculo vehiculo = vehiculoRepository.findById(id)
                 .filter(v -> Boolean.TRUE.equals(v.getEstado()))
                 .orElseThrow(() -> new RuntimeException("Vehículo no encontrado"));
@@ -55,30 +61,37 @@ public class VehiculoService {
         vehiculo.setPlaca(dto.getPlaca());
         vehiculo.setMarca(dto.getMarca());
         vehiculo.setModelo(dto.getModelo());
+        vehiculo.setColor(dto.getColor());
+        vehiculo.setTipo(dto.getTipo());
         vehiculo.setPrecioDia(dto.getPrecioDia());
-        vehiculo.setEstado(dto.getEstado());
 
+        // No modificamos estado desde la actualización
         Vehiculo actualizado = vehiculoRepository.save(vehiculo);
 
         return convertirADTO(actualizado);
     }
 
     public void eliminar(Integer id) {
+
         Vehiculo vehiculo = vehiculoRepository.findById(id)
                 .filter(v -> Boolean.TRUE.equals(v.getEstado()))
                 .orElseThrow(() -> new RuntimeException("Vehículo no encontrado"));
 
+        // Eliminación lógica
         vehiculo.setEstado(false);
 
         vehiculoRepository.save(vehiculo);
     }
 
     private VehiculoDTO convertirADTO(Vehiculo vehiculo) {
+
         return new VehiculoDTO(
                 vehiculo.getIdVehiculo(),
                 vehiculo.getPlaca(),
                 vehiculo.getMarca(),
                 vehiculo.getModelo(),
+                vehiculo.getColor(),
+                vehiculo.getTipo(),
                 vehiculo.getPrecioDia(),
                 vehiculo.getEstado()
         );

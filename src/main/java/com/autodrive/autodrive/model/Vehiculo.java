@@ -27,14 +27,19 @@ public class Vehiculo {
     @Column(name = "modelo", nullable = false, length = 40)
     private String modelo;
 
+    @Column(name = "color", nullable = false, length = 30)
+    private String color;
+
+    @Column(name = "tipo", nullable = false, length = 30)
+    private String tipo;
+
     @Column(name = "precio_dia", nullable = false, precision = 10, scale = 2)
     private BigDecimal precioDia;
 
     @Column(name = "estado", nullable = false)
     private Boolean estado;
 
-    public Vehiculo() {
-    }
+    public Vehiculo() {}
 
     public Integer getIdVehiculo() {
         return idVehiculo;
@@ -66,6 +71,22 @@ public class Vehiculo {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public BigDecimal getPrecioDia() {
