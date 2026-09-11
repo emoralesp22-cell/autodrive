@@ -1,45 +1,39 @@
-package com.autodrive.autodrive.model;
+package com.autodrive.autodrive.dto;
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class VehiculoDTO {
 
-@Entity
-@Table(name = "vehiculos")
-public class Vehiculo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_vehiculo")
     private Integer idVehiculo;
-
-    @Column(name = "placa", nullable = false, length = 15)
     private String placa;
-
-    @Column(name = "marca", nullable = false, length = 40)
     private String marca;
-
-    @Column(name = "modelo", nullable = false, length = 40)
     private String modelo;
-
-    @Column(name = "color", nullable = false, length = 30)
     private String color;
-
-    @Column(name = "tipo", nullable = false, length = 30)
     private String tipo;
-
-    @Column(name = "precio_dia", nullable = false, precision = 10, scale = 2)
     private BigDecimal precioDia;
-
-    @Column(name = "estado", nullable = false)
     private Boolean estado;
 
-    public Vehiculo() {}
+    public VehiculoDTO() {}
+
+    public VehiculoDTO(
+            Integer idVehiculo,
+            String placa,
+            String marca,
+            String modelo,
+            String color,
+            String tipo,
+            BigDecimal precioDia,
+            Boolean estado) {
+
+        this.idVehiculo = idVehiculo;
+        this.placa = placa;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.tipo = tipo;
+        this.precioDia = precioDia;
+        this.estado = estado;
+    }
 
     public Integer getIdVehiculo() {
         return idVehiculo;
