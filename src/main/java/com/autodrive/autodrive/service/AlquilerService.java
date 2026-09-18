@@ -11,6 +11,8 @@ import com.autodrive.autodrive.repository.UsuarioRepository;
 import com.autodrive.autodrive.repository.VehiculoRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,13 +36,12 @@ public class AlquilerService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public List<AlquilerDTO> listar() {
-        return alquilerRepository.findAll()
-                .stream()
-                .filter(a -> Boolean.TRUE.equals(a.getEstado()))
-                .map(this::convertirADTO)
-                .collect(Collectors.toList());
-    }
+ public List<AlquilerDTO> listar() {
+    return alquilerRepository.findAll()
+            .stream()
+            .map(this::convertirADTO)
+            .collect(Collectors.toList());
+}
 
     public AlquilerDTO buscarPorId(Integer id) {
         Alquiler alquiler = alquilerRepository.findById(id)
@@ -71,7 +72,18 @@ public class AlquilerService {
         alquiler.setUsuario(usuario);
         alquiler.setFechaInicio(dto.getFechaInicio());
         alquiler.setFechaFin(dto.getFechaFin());
-        alquiler.setTotal(dto.getTotal());
+
+        // Calcular automáticamente los días del alquiler
+        long dias = ChronoUnit.DAYS.between(
+                dto.getFechaInicio(),
+                dto.getFechaFin()
+        );
+
+        // Calcular automáticamente el total
+        BigDecimal total = vehiculo.getPrecioDia()
+                .multiply(BigDecimal.valueOf(dias));
+
+        alquiler.setTotal(total);
         alquiler.setEstado(true);
 
         Alquiler guardado = alquilerRepository.save(alquiler);
@@ -102,7 +114,18 @@ public class AlquilerService {
         alquiler.setUsuario(usuario);
         alquiler.setFechaInicio(dto.getFechaInicio());
         alquiler.setFechaFin(dto.getFechaFin());
-        alquiler.setTotal(dto.getTotal());
+
+        // Recalcular automáticamente los días
+        long dias = ChronoUnit.DAYS.between(
+                dto.getFechaInicio(),
+                dto.getFechaFin()
+        );
+
+        // Recalcular automáticamente el total
+        BigDecimal total = vehiculo.getPrecioDia()
+                .multiply(BigDecimal.valueOf(dias));
+
+        alquiler.setTotal(total);
 
         Alquiler actualizado = alquilerRepository.save(alquiler);
 
@@ -116,6 +139,7 @@ public class AlquilerService {
                 .orElseThrow(() -> new RuntimeException("Alquiler no encontrado"));
 
         alquiler.setEstado(false);
+
         alquilerRepository.save(alquiler);
     }
 

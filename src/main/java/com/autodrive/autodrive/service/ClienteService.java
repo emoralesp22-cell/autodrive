@@ -17,13 +17,13 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public List<ClienteDTO> listar() {
-        return clienteRepository.findAll()
-                .stream()
-                .filter(c -> Boolean.TRUE.equals(c.getEstado()))
-                .map(this::convertirADTO)
-                .collect(Collectors.toList());
-    }
+public List<ClienteDTO> listar() {
+    return clienteRepository.findAll()
+            .stream()
+            .map(this::convertirADTO)
+            .collect(Collectors.toList());
+}
+
 
     public ClienteDTO buscarPorId(Integer id) {
         Cliente cliente = clienteRepository.findById(id)
