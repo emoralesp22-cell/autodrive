@@ -19,7 +19,7 @@ import ModalUsuario from "./components/ModalUsuario";
 import ModalPerfil from "./components/ModalPerfil";
 import ModalConfirmacion from "./components/ModalConfirmacion";
 
-const API_BASE_URL = "https://autodrive-production-0e44.up.railway.app/api";
+const API = "https://autodrive-production-0e44.up.railway.app/api";
 
 function App() {
   // =========================================================
