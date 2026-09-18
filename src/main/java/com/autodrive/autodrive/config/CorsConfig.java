@@ -15,7 +15,8 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173, http://localhost:5174")
+                        .allowedOrigins("http://localhost:5173","http://localhost:5174",
+                        "https://marvelous-enjoyment-production-55f0.up.railway.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
