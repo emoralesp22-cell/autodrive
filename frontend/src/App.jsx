@@ -1144,7 +1144,7 @@ const ejecutarConfirmacion = async () => {
 // =========================================================
 
 return (
-  <div className="min-h-screen bg-slate-950 text-white">
+  <div className="min-h-screen overflow-hidden rounded-3xl bg-gray-900 text-white">
 
     {/* SIDEBAR */}
 
@@ -1156,33 +1156,33 @@ return (
 
     {/* CONTENIDO PRINCIPAL */}
 
-    <main className="min-h-screen pl-64">
+    <main className="min-h-screen overflow-hidden rounded-3xl pt-16 md:pt-0 md:pl-64">
 
       {/* HEADER */}
 
-      <header className="sticky top-0 z-40 flex items-center justify-between border-b border-white/10 bg-slate-950/90 px-8 py-5 backdrop-blur-xl">
+<header className="sticky top-0 z-40 hidden items-center justify-between border-b border-white/10 bg-slate-950/90 px-4 py-3 backdrop-blur-xl md:flex md:px-8 md:py-5">
 
-        <div>
+  <div>
 
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-sky-400">
-            Sistema de gestión
-          </span>
+    <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-sky-400 md:text-xs md:tracking-[0.25em]">
+      Sistema de gestión
+    </span>
 
-          <h1 className="mt-1 text-2xl font-black tracking-tight">
-            AutoDrive
-          </h1>
+    <h1 className="mt-1 text-xl font-black tracking-tight md:text-2xl">
+      AutoDrive
+    </h1>
 
-        </div>
+  </div>
 
-        <div className="flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-xs font-bold text-emerald-400">
+  <div className="flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1.5 text-[9px] font-bold text-emerald-400 md:gap-2 md:px-4 md:py-2 md:text-xs">
 
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] md:h-2 md:w-2" />
 
-          Sistema conectado
+    Sistema conectado
 
-        </div>
+  </div>
 
-      </header>
+</header>
 
 
       {/* MENSAJES */}

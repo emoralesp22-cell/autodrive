@@ -86,15 +86,16 @@ function ModalAlquiler({
                   Seleccionar cliente
                 </option>
 
-                {datos.clientes.map((cliente) => (
-                  <option
-                    key={cliente.idCliente}
-                    value={cliente.idCliente}
-                  >
-                    {cliente.nombre}
-                  </option>
-                ))}
-
+                {datos.clientes
+  .filter((cliente) => cliente.estado === true)
+  .map((cliente) => (
+    <option
+      key={cliente.idCliente}
+      value={cliente.idCliente}
+    >
+      {cliente.nombre}
+    </option>
+  ))}
               </select>
 
             </div>
