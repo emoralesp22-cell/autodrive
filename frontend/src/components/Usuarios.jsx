@@ -7,21 +7,21 @@ function Usuarios({
   const usuarios = datos.usuarios || [];
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950 p-3 text-white shadow-2xl sm:space-y-5 sm:p-6">
 
       {/* ENCABEZADO */}
-      <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
 
         <div>
           <span className="text-xs font-black uppercase tracking-[0.25em] text-sky-400">
             Administración
           </span>
 
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-white">
+          <h2 className="mt-1 text-3xl font-black tracking-tight text-white md:mt-2">
             Usuarios
           </h2>
 
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-slate-400 md:mt-2">
             Gestiona los usuarios y perfiles del sistema.
           </p>
         </div>
@@ -29,45 +29,45 @@ function Usuarios({
         <button
           type="button"
           onClick={abrirNuevoUsuario}
-          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-sky-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-sky-500/20 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-400 hover:shadow-sky-500/30"
+          className="self-center rounded-xl bg-sky-500 px-4 py-2 text-xs font-black text-white shadow-lg shadow-sky-500/20 transition duration-200 hover:bg-sky-400 sm:px-4 sm:py-2.5 sm:text-sm md:self-auto md:inline-flex md:items-center md:justify-center md:gap-2 md:rounded-2xl md:px-5 md:py-3"
         >
-          <span className="text-lg">+</span>
+          <span className="text-base md:text-lg">+</span>
           Nuevo usuario
         </button>
 
       </div>
 
       {/* RESUMEN */}
-      <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 shadow-xl">
+      <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-3 shadow-xl md:rounded-3xl md:p-5">
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:gap-4">
 
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+            <p className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 md:text-[10px]">
               Control de acceso
             </p>
 
-            <h3 className="mt-1 text-xl font-black text-white">
+            <h3 className="mt-0.5 text-lg font-black text-white md:mt-1 md:text-xl">
               Usuarios registrados
             </h3>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-0.5 text-xs text-slate-500 md:mt-1 md:text-sm">
               Administra las cuentas disponibles en AutoDrive.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 md:gap-3">
 
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/20 bg-sky-500/10 text-xl">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-lg md:h-12 md:w-12 md:rounded-2xl md:text-xl">
               👥
             </div>
 
             <div>
-              <p className="text-[10px] font-black uppercase tracking-wider text-slate-500">
+              <p className="text-[9px] font-black uppercase tracking-wider text-slate-500 md:text-[10px]">
                 Total
               </p>
 
-              <p className="text-2xl font-black text-white">
+              <p className="text-xl font-black text-white md:text-2xl">
                 {usuarios.length}
               </p>
             </div>
@@ -78,7 +78,7 @@ function Usuarios({
 
       </div>
 
-      {/* TABLA */}
+      {/* TABLA / TARJETAS */}
       <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/70 shadow-2xl">
 
         {usuarios.length === 0 ? (
@@ -111,148 +111,242 @@ function Usuarios({
 
         ) : (
 
-          <div className="overflow-x-auto">
+          <>
+            {/* ================================================= */}
+            {/* TARJETAS - SOLO CELULAR */}
+            {/* ================================================= */}
 
-            <table className="w-full min-w-[900px] text-left">
+            <div className="grid grid-cols-2 gap-3 p-3 md:hidden">
 
-              {/* CABECERA */}
-              <thead className="border-b border-white/10 bg-slate-950/80">
+              {usuarios.map((usuario) => (
 
-                <tr>
+                <div
+                  key={usuario.idUsuario}
+                  className="min-w-0 rounded-2xl border border-white/10 bg-slate-950/60 p-3 shadow-lg"
+                >
 
-                  <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    ID
-                  </th>
+                  {/* USUARIO */}
+                  <div className="flex min-w-0 items-center gap-2">
 
-                  <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    Usuario
-                  </th>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-base">
+                      👤
+                    </div>
 
-                  <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    Nombre
-                  </th>
+                    <div className="min-w-0">
+                      <p className="truncate text-xs font-black text-white">
+                        {usuario.usuario}
+                      </p>
 
-                  <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    Correo
-                  </th>
+                      <p className="truncate text-[9px] font-bold uppercase tracking-wider text-slate-500">
+                        Usuario
+                      </p>
+                    </div>
 
-                  <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    Perfil
-                  </th>
+                  </div>
 
-                  <th className="px-6 py-5 text-right text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
-                    Acciones
-                  </th>
+                  {/* NOMBRE */}
+                  <div className="mt-3 min-w-0">
 
-                </tr>
+                    <p className="text-[9px] font-black uppercase tracking-wider text-slate-500">
+                      Nombre
+                    </p>
 
-              </thead>
+                    <p className="truncate text-xs font-semibold text-slate-200">
+                      {usuario.nombre}
+                    </p>
 
-              {/* CUERPO */}
-              <tbody className="divide-y divide-white/5">
+                  </div>
 
-                {usuarios.map((usuario) => (
+                  {/* PERFIL */}
+                  <div className="mt-2 min-w-0">
 
-                  <tr
-                    key={usuario.idUsuario}
-                    className="group transition duration-200 hover:bg-sky-500/[0.04]"
-                  >
+                    <p className="text-[9px] font-black uppercase tracking-wider text-slate-500">
+                      Perfil
+                    </p>
 
-                    {/* ID */}
-                    <td className="px-6 py-5">
+                    <span className="mt-1 inline-flex max-w-full truncate rounded-lg border border-sky-500/20 bg-sky-500/10 px-2 py-1 text-[9px] font-black text-sky-400">
+                      {usuario.nombrePerfil || `Perfil #${usuario.idPerfil}`}
+                    </span>
 
-                      <span className="inline-flex rounded-xl border border-white/10 bg-slate-950 px-3 py-1.5 text-xs font-black text-slate-400">
-                        #{usuario.idUsuario}
-                      </span>
+                  </div>
 
-                    </td>
+                  {/* ACCIONES */}
+                  <div className="mt-3 grid grid-cols-2 gap-2">
 
-                    {/* USUARIO */}
-                    <td className="px-6 py-5">
+                    <button
+                      type="button"
+                      onClick={() => abrirEditarUsuario(usuario)}
+                      className="rounded-lg border border-sky-500/20 bg-sky-500/10 px-2 py-2 text-[10px] font-black text-sky-400 transition hover:bg-sky-500 hover:text-white"
+                      title="Editar"
+                    >
+                      ✏️
+                    </button>
 
-                      <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => eliminarUsuario(usuario.idUsuario)}
+                      className="rounded-lg border border-red-500/20 bg-red-500/10 px-2 py-2 text-[10px] font-black text-red-400 transition hover:bg-red-500 hover:text-white"
+                      title="Anular"
+                    >
+                      🗑️
+                    </button>
 
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-xl shadow-inner">
-                          👤
-                        </div>
+                  </div>
 
-                        <div>
+                </div>
 
-                          <p className="text-sm font-black text-white">
-                            {usuario.usuario}
-                          </p>
+              ))}
 
-                          <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                            Cuenta del sistema
-                          </p>
+            </div>
 
-                        </div>
+            {/* ================================================= */}
+            {/* TABLA - SOLO PC */}
+            {/* ================================================= */}
 
-                      </div>
+            <div className="hidden overflow-x-auto md:block">
 
-                    </td>
+              <table className="w-full min-w-[900px] text-left">
 
-                    {/* NOMBRE */}
-                    <td className="px-6 py-5">
+                {/* CABECERA */}
+                <thead className="border-b border-white/10 bg-slate-950/80">
 
-                      <span className="text-sm font-semibold text-slate-200">
-                        {usuario.nombre}
-                      </span>
+                  <tr>
 
-                    </td>
+                    <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      ID
+                    </th>
 
-                    {/* CORREO */}
-                    <td className="px-6 py-5">
+                    <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      Usuario
+                    </th>
 
-                      <span className="text-sm font-medium text-slate-400">
-                        {usuario.correo}
-                      </span>
+                    <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      Nombre
+                    </th>
 
-                    </td>
+                    <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      Correo
+                    </th>
 
-                    {/* PERFIL */}
-                    <td className="px-6 py-5">
+                    <th className="px-6 py-5 text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      Perfil
+                    </th>
 
-                      <span className="inline-flex rounded-xl border border-sky-500/20 bg-sky-500/10 px-3 py-1.5 text-xs font-black text-sky-400">
-                        {usuario.nombrePerfil || `Perfil #${usuario.idPerfil}`}
-                      </span>
-
-                    </td>
-
-                    {/* ACCIONES */}
-                    <td className="px-6 py-5">
-
-                      <div className="flex justify-end gap-2">
-
-                        <button
-                          type="button"
-                          onClick={() => abrirEditarUsuario(usuario)}
-                          className="rounded-xl border border-sky-500/20 bg-sky-500/10 px-4 py-2.5 text-xs font-black text-sky-400 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-500 hover:text-white hover:shadow-lg hover:shadow-sky-500/20"
-                        >
-                          ✏️ Editar
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => eliminarUsuario(usuario.idUsuario)}
-                          className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-xs font-black text-red-400 transition duration-200 hover:-translate-y-0.5 hover:bg-red-500 hover:text-white hover:shadow-lg hover:shadow-red-500/20"
-                        >
-                          Anular
-                        </button>
-
-                      </div>
-
-                    </td>
+                    <th className="px-6 py-5 text-right text-[10px] font-black uppercase tracking-[0.15em] text-slate-500">
+                      Acciones
+                    </th>
 
                   </tr>
 
-                ))}
+                </thead>
 
-              </tbody>
+                {/* CUERPO */}
+                <tbody className="divide-y divide-white/5">
 
-            </table>
+                  {usuarios.map((usuario) => (
 
-          </div>
+                    <tr
+                      key={usuario.idUsuario}
+                      className="group transition duration-200 hover:bg-sky-500/[0.04]"
+                    >
+
+                      {/* ID */}
+                      <td className="px-6 py-5">
+
+                        <span className="inline-flex rounded-xl border border-white/10 bg-slate-950 px-3 py-1.5 text-xs font-black text-slate-400">
+                          #{usuario.idUsuario}
+                        </span>
+
+                      </td>
+
+                      {/* USUARIO */}
+                      <td className="px-6 py-5">
+
+                        <div className="flex items-center gap-3">
+
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-xl shadow-inner">
+                            👤
+                          </div>
+
+                          <div>
+
+                            <p className="text-sm font-black text-white">
+                              {usuario.usuario}
+                            </p>
+
+                            <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                              Cuenta del sistema
+                            </p>
+
+                          </div>
+
+                        </div>
+
+                      </td>
+
+                      {/* NOMBRE */}
+                      <td className="px-6 py-5">
+
+                        <span className="text-sm font-semibold text-slate-200">
+                          {usuario.nombre}
+                        </span>
+
+                      </td>
+
+                      {/* CORREO */}
+                      <td className="px-6 py-5">
+
+                        <span className="text-sm font-medium text-slate-400">
+                          {usuario.correo}
+                        </span>
+
+                      </td>
+
+                      {/* PERFIL */}
+                      <td className="px-6 py-5">
+
+                        <span className="inline-flex rounded-xl border border-sky-500/20 bg-sky-500/10 px-3 py-1.5 text-xs font-black text-sky-400">
+                          {usuario.nombrePerfil || `Perfil #${usuario.idPerfil}`}
+                        </span>
+
+                      </td>
+
+                      {/* ACCIONES */}
+                      <td className="px-6 py-5">
+
+                        <div className="flex justify-end gap-2">
+
+                          <button
+                            type="button"
+                            onClick={() => abrirEditarUsuario(usuario)}
+                            className="rounded-xl border border-sky-500/20 bg-sky-500/10 px-4 py-2.5 text-xs font-black text-sky-400 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-500 hover:text-white hover:shadow-lg hover:shadow-sky-500/20"
+                          >
+                            ✏️ Editar
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => eliminarUsuario(usuario.idUsuario)}
+                            className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-xs font-black text-red-400 transition duration-200 hover:-translate-y-0.5 hover:bg-red-500 hover:text-white hover:shadow-lg hover:shadow-red-500/20"
+                          >
+                            Anular
+                          </button>
+
+                        </div>
+
+                      </td>
+
+                    </tr>
+
+                  ))}
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </>
 
         )}
 

@@ -9,21 +9,21 @@ function Clientes({
   );
 
   return (
-    <section className="space-y-5 sm:space-y-8">
+    <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950 p-3 text-white shadow-2xl sm:space-y-5 sm:p-6">
 
       {/* ENCABEZADO */}
-      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
 
         <div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-sky-400 sm:text-xs sm:tracking-[0.25em]">
+          <span className="text-[9px] font-black uppercase tracking-[0.2em] text-sky-400 sm:text-xs sm:tracking-[0.25em]">
             Administración
           </span>
 
-          <h2 className="mt-1 text-2xl font-black tracking-tight text-white sm:mt-2 sm:text-3xl">
+          <h2 className="mt-0.5 text-2xl font-black tracking-tight text-white sm:mt-1 sm:text-3xl">
             Clientes
           </h2>
 
-          <p className="mt-1 hidden text-sm text-slate-400 sm:block">
+          <p className="mt-0.5 hidden text-sm text-slate-400 sm:block">
             Gestiona la información de los clientes registrados.
           </p>
         </div>
@@ -31,7 +31,7 @@ function Clientes({
         <button
           type="button"
           onClick={abrirNuevoCliente}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-sky-500/20 transition duration-200 hover:bg-sky-400 sm:rounded-2xl sm:px-5 sm:py-3 sm:text-sm"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-4 py-2 text-xs font-black text-white shadow-lg shadow-sky-500/20 transition duration-200 hover:bg-sky-400 sm:rounded-2xl sm:px-5 sm:py-2.5 sm:text-sm"
         >
           <span className="text-lg">+</span>
           Nuevo cliente
@@ -40,7 +40,7 @@ function Clientes({
       </div>
 
       {/* RESUMEN */}
-      <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-3 shadow-xl sm:rounded-3xl sm:p-5">
+      <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-2.5 shadow-xl sm:rounded-3xl sm:p-4">
 
         <div className="flex items-center justify-between gap-3">
 
@@ -49,19 +49,21 @@ function Clientes({
               Registro de clientes
             </p>
 
-            <h3 className="mt-1 text-base font-black text-white sm:text-xl">
+            <h3 className="mt-0.5 text-sm font-black text-white sm:mt-1 sm:text-xl">
               Clientes registrados
             </h3>
           </div>
 
-          <div className="rounded-xl border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-center sm:rounded-2xl sm:px-4 sm:py-3">
+          <div className="rounded-xl border border-sky-500/20 bg-sky-500/10 px-2.5 py-1.5 text-center sm:rounded-2xl sm:px-4 sm:py-2.5">
+
             <p className="text-[8px] font-black uppercase tracking-wider text-sky-400 sm:text-[10px]">
               Total
             </p>
 
-            <p className="mt-0.5 text-xl font-black text-white sm:mt-1 sm:text-2xl">
+            <p className="mt-0.5 text-lg font-black text-white sm:mt-1 sm:text-2xl">
               {clientes.length}
             </p>
+
           </div>
 
         </div>

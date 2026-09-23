@@ -23,8 +23,7 @@ function ModalPerfil({
       <div className="w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
 
         {/* ENCABEZADO */}
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-5 md:px-8">
-
+        <div className="relative flex items-center justify-between overflow-hidden border-b border-white/10 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 px-3 py-3 sm:px-6 sm:py-5">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-sky-400">
               Perfiles
@@ -56,7 +55,7 @@ function ModalPerfil({
         {/* FORMULARIO */}
         <form
           onSubmit={guardarPerfil}
-          className="space-y-6 p-6 md:p-8"
+          className="space-y-4 p-4 sm:space-y-6 sm:p-6 md:p-8"
         >
 
           {/* NOMBRE */}
@@ -74,13 +73,13 @@ function ModalPerfil({
               }
               placeholder="Ej. Administrador"
               required
-              className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20"
+              className="w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-2.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 sm:py-3"
             />
 
           </div>
 
           {/* INFORMACIÓN */}
-          <div className="rounded-xl border border-sky-500/10 bg-sky-500/5 px-4 py-3">
+          <div className="rounded-xl border border-sky-500/10 bg-sky-500/5 px-3 py-2.5 sm:px-4 sm:py-3">
 
             <p className="text-xs leading-5 text-slate-400">
               Los perfiles permiten organizar los tipos de usuarios
@@ -90,7 +89,7 @@ function ModalPerfil({
           </div>
 
           {/* ACCIONES */}
-          <div className="flex flex-col-reverse gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-end">
+          <div className="flex flex-col-reverse gap-2 border-t border-white/10 pt-4 sm:gap-3 sm:pt-6 sm:flex-row sm:justify-end">
 
             <button
               type="button"

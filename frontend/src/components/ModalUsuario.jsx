@@ -24,8 +24,7 @@ function ModalUsuario({
       <div className="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
 
         {/* ENCABEZADO */}
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-5 md:px-8">
-
+        <div className="relative flex items-center justify-between overflow-hidden border-b border-white/10 bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 px-3 py-3 sm:px-6 sm:py-5">
           <div>
 
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-sky-400">

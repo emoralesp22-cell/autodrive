@@ -17,7 +17,7 @@ function Perfiles({
   };
 
   return (
-    <section className="min-h-full bg-slate-950 p-3 text-white sm:p-6">
+    <section className="min-h-full rounded-3xl bg-slate-950 p-3 text-white sm:p-6">
       <div className="mx-auto max-w-7xl space-y-4 sm:space-y-6">
 
         {/* ENCABEZADO */}
@@ -40,7 +40,7 @@ function Perfiles({
           <button
             type="button"
             onClick={abrirNuevoPerfil}
-            className="rounded-xl bg-white px-4 py-2.5 text-xs font-black text-slate-950 shadow-lg transition hover:bg-slate-200 sm:rounded-2xl sm:px-5 sm:py-3 sm:text-sm"
+            className="rounded-xl bg-sky-500 px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-sky-500/20 transition hover:bg-sky-400 hover:shadow-sky-500/30 sm:rounded-2xl sm:px-5 sm:py-3 sm:text-sm"
           >
             + Nuevo perfil
           </button>
@@ -50,7 +50,7 @@ function Perfiles({
         {/* RESUMEN */}
         <div className="grid gap-3">
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-3 shadow-xl sm:rounded-3xl sm:p-5">
+          <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-3 shadow-xl sm:rounded-3xl sm:p-5">
 
             <div className="flex items-center justify-between">
 
@@ -81,7 +81,7 @@ function Perfiles({
         </div>
 
         {/* CONTENIDO */}
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-xl sm:rounded-3xl">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-xl sm:rounded-3xl">
 
           {perfiles.length === 0 ? (
 
@@ -121,7 +121,7 @@ function Perfiles({
 
                   <article
                     key={perfil.idPerfil}
-                    className="rounded-xl border border-slate-800 bg-slate-950 p-3"
+                    className="rounded-xl border border-white/10 bg-slate-950 p-3"
                   >
 
                     <div className="flex items-center gap-2">

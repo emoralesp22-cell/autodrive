@@ -7,6 +7,7 @@ function Vehiculos({
   busquedaVehiculos,
   setBusquedaVehiculos,
   filtroVehiculos,
+  setFiltroVehiculos,
 }) {
   // ==========================================
   // SABER SI UN VEHÍCULO ESTÁ ALQUILADO
