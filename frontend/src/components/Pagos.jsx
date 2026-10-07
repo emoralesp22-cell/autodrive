@@ -502,7 +502,7 @@ function Pagos({
   // =========================================================
 
   return (
-   <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950 p-3 text-white shadow-2xl sm:space-y-5 sm:p-6">
+   <section className="space-y-3 rounded-3xl border border-white/10 bg-slate-950   p-3 text-white shadow-2xl sm:space-y-5 sm:p-6">
 
       {/* ENCABEZADO */}
       <div className="flex flex-col gap-3 sm:gap-5 md:flex-row md:items-end md:justify-between">
