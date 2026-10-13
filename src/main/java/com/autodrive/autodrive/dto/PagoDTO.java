@@ -11,17 +11,38 @@ public class PagoDTO {
     private BigDecimal monto;
     private String formaPago;
     private Boolean estado;
+    private String motivoAnulacion;
+    private LocalDate fechaAnulacion;
 
     public PagoDTO() {}
 
-    public PagoDTO(Integer idPago, Integer idAlquiler, LocalDate fechaPago,
-                   BigDecimal monto, String formaPago, Boolean estado) {
+    public PagoDTO(
+            Integer idPago,
+            Integer idAlquiler,
+            LocalDate fechaPago,
+            BigDecimal monto,
+            String formaPago,
+            Boolean estado) {
+        this(idPago, idAlquiler, fechaPago, monto, formaPago, estado, null, null);
+    }
+
+    public PagoDTO(
+            Integer idPago,
+            Integer idAlquiler,
+            LocalDate fechaPago,
+            BigDecimal monto,
+            String formaPago,
+            Boolean estado,
+            String motivoAnulacion,
+            LocalDate fechaAnulacion) {
         this.idPago = idPago;
         this.idAlquiler = idAlquiler;
         this.fechaPago = fechaPago;
         this.monto = monto;
         this.formaPago = formaPago;
         this.estado = estado;
+        this.motivoAnulacion = motivoAnulacion;
+        this.fechaAnulacion = fechaAnulacion;
     }
 
     public Integer getIdPago() {
@@ -70,5 +91,21 @@ public class PagoDTO {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public String getMotivoAnulacion() {
+        return motivoAnulacion;
+    }
+
+    public void setMotivoAnulacion(String motivoAnulacion) {
+        this.motivoAnulacion = motivoAnulacion;
+    }
+
+    public LocalDate getFechaAnulacion() {
+        return fechaAnulacion;
+    }
+
+    public void setFechaAnulacion(LocalDate fechaAnulacion) {
+        this.fechaAnulacion = fechaAnulacion;
     }
 }

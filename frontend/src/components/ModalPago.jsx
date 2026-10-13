@@ -35,9 +35,14 @@ function ModalPago({
   );
 
   // Si estamos editando un pago, quitamos su monto del cálculo
-  const montoPagoActual = pagoEditando
-    ? Number(pagoEditando.monto || 0)
-    : 0;
+  const mismoAlquilerAlEditar =
+  pagoEditando &&
+  Number(pagoEditando.idAlquiler) ===
+    Number(formPago.idAlquiler);
+
+const montoPagoActual = mismoAlquilerAlEditar
+  ? Number(pagoEditando.monto || 0)
+  : 0;
 
   const totalPagadoSinEstePago = Math.max(
     0,
@@ -172,10 +177,11 @@ function ModalPago({
               Alquiler
             </label>
 
-            <select
-              value={formPago.idAlquiler || ""}
-              onChange={(e) => seleccionarAlquiler(e.target.value)}
-              required
+           <select
+  value={formPago.idAlquiler || ""}
+  onChange={(e) => seleccionarAlquiler(e.target.value)}
+  required
+  disabled={Boolean(pagoEditando)}
               className="w-full rounded-lg border border-white/10 bg-slate-800 px-3 py-2.5 text-xs text-white outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 sm:rounded-xl sm:px-4 sm:py-3 sm:text-sm"
             >
               <option value="">

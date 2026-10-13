@@ -6,43 +6,55 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
 
-    private final ClienteService clienteService;
+private final ClienteService clienteService;
 
-    public ClienteController(ClienteService clienteService) {
-        this.clienteService = clienteService;
-    }
+public ClienteController(ClienteService clienteService) {
+    this.clienteService = clienteService;
+}
 
-    @GetMapping
-    public ResponseEntity<List<ClienteDTO>> listar() {
-        return ResponseEntity.ok(clienteService.listar());
-    }
+@GetMapping
+public ResponseEntity<List<ClienteDTO>> listar() {
+    return ResponseEntity.ok(clienteService.listar());
+}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ClienteDTO> buscarPorId(@PathVariable Integer id) {
-        return ResponseEntity.ok(clienteService.buscarPorId(id));
-    }
+@GetMapping("/{id}")
+public ResponseEntity<ClienteDTO> buscarPorId(
+        @PathVariable Integer id) {
+    return ResponseEntity.ok(clienteService.buscarPorId(id));
+}
 
-    @PostMapping
-    public ResponseEntity<ClienteDTO> guardar(@RequestBody ClienteDTO dto) {
-        return ResponseEntity.ok(clienteService.guardar(dto));
-    }
+@PostMapping
+public ResponseEntity<ClienteDTO> guardar(
+        @RequestBody ClienteDTO dto) {
+    return ResponseEntity.ok(clienteService.guardar(dto));
+}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ClienteDTO> actualizar(
-            @PathVariable Integer id,
-            @RequestBody ClienteDTO dto) {
+@PutMapping("/{id}")
+public ResponseEntity<ClienteDTO> actualizar(
+        @PathVariable Integer id,
+        @RequestBody ClienteDTO dto) {
 
-        return ResponseEntity.ok(clienteService.actualizar(id, dto));
-    }
+    return ResponseEntity.ok(
+            clienteService.actualizar(id, dto)
+    );
+}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
+@DeleteMapping("/{id}")
+public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+    try {
         clienteService.eliminar(id);
         return ResponseEntity.noContent().build();
+
+    } catch (IllegalStateException ex) {
+        return ResponseEntity.status(409)
+                .body(Map.of("mensaje", ex.getMessage()));
     }
+}
+
 }

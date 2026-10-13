@@ -41,6 +41,12 @@ public class Pago {
     @Column(name = "estado", nullable = false)
     private Boolean estado;
 
+    @Column(name = "motivo_anulacion", length = 500)
+    private String motivoAnulacion;
+
+    @Column(name = "fecha_anulacion")
+    private LocalDate fechaAnulacion;
+
     public Pago() {}
 
     public Integer getIdPago() {
@@ -89,5 +95,21 @@ public class Pago {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public String getMotivoAnulacion() {
+        return motivoAnulacion;
+    }
+
+    public void setMotivoAnulacion(String motivoAnulacion) {
+        this.motivoAnulacion = motivoAnulacion;
+    }
+
+    public LocalDate getFechaAnulacion() {
+        return fechaAnulacion;
+    }
+
+    public void setFechaAnulacion(LocalDate fechaAnulacion) {
+        this.fechaAnulacion = fechaAnulacion;
     }
 }
