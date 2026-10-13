@@ -13,6 +13,7 @@ public class AlquilerDTO {
     private LocalDate fechaFin;
     private BigDecimal total;
     private Boolean estado;
+    private Boolean tienePagos = false;
 
     public AlquilerDTO() {
     }
@@ -28,6 +29,14 @@ public class AlquilerDTO {
         this.fechaFin = fechaFin;
         this.total = total;
         this.estado = estado;
+    }
+
+    public AlquilerDTO(Integer idAlquiler, Integer idCliente, Integer idVehiculo,
+                       Integer idUsuario, LocalDate fechaInicio, LocalDate fechaFin,
+                       BigDecimal total, Boolean estado, Boolean tienePagos) {
+        this(idAlquiler, idCliente, idVehiculo, idUsuario,
+                fechaInicio, fechaFin, total, estado);
+        this.tienePagos = tienePagos;
     }
 
     public Integer getIdAlquiler() {
@@ -92,5 +101,13 @@ public class AlquilerDTO {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Boolean getTienePagos() {
+        return tienePagos;
+    }
+
+    public void setTienePagos(Boolean tienePagos) {
+        this.tienePagos = tienePagos;
     }
 }

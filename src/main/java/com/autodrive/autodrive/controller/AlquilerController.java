@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/alquileres")
@@ -33,16 +34,27 @@ public class AlquilerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AlquilerDTO> actualizar(
+    public ResponseEntity<?> actualizar(
             @PathVariable Integer id,
             @RequestBody AlquilerDTO dto) {
-
-        return ResponseEntity.ok(alquilerService.actualizar(id, dto));
+        try {
+            return ResponseEntity.ok(alquilerService.actualizar(id, dto));
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(
+                    Map.of("error", ex.getMessage())
+            );
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
-        alquilerService.eliminar(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> eliminar(@PathVariable Integer id) {
+        try {
+            alquilerService.eliminar(id);
+            return ResponseEntity.noContent().build();
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(
+                    Map.of("error", ex.getMessage())
+            );
+        }
     }
 }
