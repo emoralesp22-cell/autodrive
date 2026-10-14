@@ -18,10 +18,31 @@ function Dashboard({
   // VEHÍCULOS DISPONIBLES
   // ==========================================
   const vehiculosDisponibles = vehiculos.filter((vehiculo) => {
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
     const alquilado = alquileres.some((alquiler) => {
+      const idVehiculoAlquiler =
+        alquiler.idVehiculo ?? alquiler.vehiculo?.idVehiculo;
+
+      if (
+        Number(idVehiculoAlquiler) !== Number(vehiculo.idVehiculo) ||
+        alquiler.estado !== true ||
+        !alquiler.fechaInicio ||
+        !alquiler.fechaFin
+      ) {
+        return false;
+      }
+
+      const inicio = new Date(`${alquiler.fechaInicio}T00:00:00`);
+      const fin = new Date(`${alquiler.fechaFin}T00:00:00`);
+
       return (
-        Number(alquiler.idVehiculo) === Number(vehiculo.idVehiculo) &&
-        alquiler.estado === true
+        !Number.isNaN(inicio.getTime()) &&
+        !Number.isNaN(fin.getTime()) &&
+        inicio <= fin &&
+        inicio <= hoy &&
+        hoy <= fin
       );
     });
 
