@@ -32,7 +32,7 @@ import ModalPerfil from "./components/ModalPerfil";
 
 import ModalConfirmacion from "./components/ModalConfirmacion";
 
-const API = "http://localhost:8080/api";
+const API = "https://autodrive-production-bdb8.up.railway.app/api";
 
 function App() {
 
