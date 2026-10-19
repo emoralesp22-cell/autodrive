@@ -1,3 +1,4 @@
+
 package com.autodrive.autodrive.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,12 +16,18 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173","http://localhost:5174",
-                        "https://marvelous-enjoyment-production-55f0.up.railway.app")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedOrigins(
+                            "http://localhost:5173",
+                            "http://localhost:5174",
+                            "https://marvelous-enjoyment-production-55f0.up.railway.app",
+                            "https://sublime-courage-production-0eab.up.railway.app"
+                        )
+                        .allowedMethods(
+                            "GET", "POST", "PUT", "PATCH",
+                            "DELETE", "OPTIONS"
+                        )
                         .allowedHeaders("*");
             }
         };
     }
 }
-
